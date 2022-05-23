@@ -56,7 +56,7 @@ generate.roc.data <- sapply(
 )
 
 #Plot ROC in one plot
-caret.models.plot <- ROCMultiPlotFromCaret(generate.roc.data, "Múltiples Modelos Caret")
+caret.models.plot <- ROCMultiPlotFromCaret(generate.roc.data, "Multiple Models Caret")
 plot(caret.models.plot)
 
 

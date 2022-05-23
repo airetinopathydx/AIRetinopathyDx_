@@ -26,7 +26,7 @@ mA2.setTest$group <- "test"
 mA2.photo.60s.t.partitioning <- rbind(mA2.setTrain, mA2.setTest)
 
 mA2.model.control.animals <- TraingModelH2ODL(mA2.photo.60s.t.partitioning, remove.columns, class.column = 'health.status', reproducible = T)
-mA2.model.control.animals.plot <- SingleModelROCPlot(mA2.model.control.animals$performance, "Modelo CTRL vs STZ 0.9Hz - 2.1Hz")
+mA2.model.control.animals.plot <- SingleModelROCPlot(mA2.model.control.animals$performance, "Model Control vs DM 0.9Hz - 2.1Hz")
 plot(mA2.model.control.animals.plot, type="roc")
 
 #Confutation matrix with caret

@@ -27,7 +27,7 @@ m2.photo.60s.t.partitioning <- rbind(m2.setTrain, m2.setTest)
 
 #Trains the model.
 m2.model.control.humans <- TraingModelH2ODL(m2.photo.60s.t.partitioning, remove.columns, class.column = 'health.status', reproducible = T)
-m2.model.control.humans.plot <- SingleModelROCPlot(m2.model.control.humans$performance, "Modelo Sano vs Sobrepeso + Obesidad + MetS  0.3 - 40Hz")
+m2.model.control.humans.plot <- SingleModelROCPlot(m2.model.control.humans$performance, "Model Control vs OW + Obesity + MetS  0.3 - 40Hz")
 plot(m2.model.control.humans.plot, type="roc")
 
 #Proportion of training
