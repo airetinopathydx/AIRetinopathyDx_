@@ -9,7 +9,7 @@ source('R/BasicFunctions.R')
 library(caret)
 remove.columns <- c("patient", "patient.number","group", "obs")
 
-m2.photo.60s.t <- read.csv("DataH_and_A/wavelet2022/dfBalanceWaveletSegundaCat28022022A_2.5_40Hz.csv")
+m2.photo.60s.t <- read.csv("DataH_and_A/wavelet2022/HumansBalanced/dfHealthvsDisorder_2.5_40Hz_2ndCat.csv")
 m2.photo.60s.t <- setDT(m2.photo.60s.t)
 
 set.seed(1234567)
@@ -29,9 +29,6 @@ m2.photo.60s.t.partitioning <- rbind(m2.setTrain, m2.setTest)
 m2.model.control.humans <- TraingModelH2ODL(m2.photo.60s.t.partitioning, remove.columns, class.column = 'health.status', reproducible = T)
 m2.model.control.humans.plot <- SingleModelROCPlot(m2.model.control.humans$performance, "Model Health vs Disorder  2.5Hz - 40Hz")
 plot(m2.model.control.humans.plot, type="roc")
-
-#Confusion matrix with caret
-#confusionMatrix(as.factor(as.data.frame(m2.model.control.humans$predictions)$predict), as.factor(m2.model.control.humans$testset$health.status))
 
 #Proportion of training
 table(m2.setTrain$health.status)

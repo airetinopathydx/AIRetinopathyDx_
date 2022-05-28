@@ -2,15 +2,14 @@ source("BaseFunctions/DataProcessing.R")
 source("BaseFunctions/ModelFunctions_Modified_Tuning.R")
 source('R/BasicFunctions.R')
 
-#Animal Models, CTRL vs STZ mice, Balanced
+#Animal Models, CTRL vs DM, Balanced
 #frequency <= 40 Hz and >= 0.1 Hz, time window for each observation (size.bin) = 60000 ms,
 #Proportion 80/20, Maximum reading of files (size.of.register) = 120000 ms, with Tuning.
 
 library(caret)
 remove.columns <- c("patient","group", "obs")
 
-mA.photo.60s.t <- read.csv("DataH_and_A/wavelet2022/AnimalsBalanced/dfmiceCTRLvsSTZ_0.1_40HzBalanceo.csv")
-#mA.photo.60s.t <- read.csv("DataH_and_A/wavelet2022/dfmiceCTRLvsSTZ_0.1_40Hz.csv")
+mA.photo.60s.t <- read.csv("DataH_and_A/wavelet2022/AnimalsBalanced/dfmiceCTRLvsDM_STZ0.1_40Hz.csv")
 mA.photo.60s.t <- setDT(mA.photo.60s.t)
 
 set.seed(1234567)
@@ -29,7 +28,7 @@ mA.model.control.animals <- TraingModelH2ODL(mA.photo.60s.t.partitioning, remove
 mA.model.control.animals.plot <- SingleModelROCPlot(mA.model.control.animals$performance, "Model Control vs DM  0.1Hz - 40Hz")
 plot(mA.model.control.animals.plot, type="roc")
 
-#Confutation matrix with caret
+#Confusion matrix with caret
 confusionMatrix(as.factor(as.data.frame(mA.model.control.animals$predictions)$predict), as.factor(mA.model.control.animals$testset$health.status), mode = "everything")
 
 #Proportion of training

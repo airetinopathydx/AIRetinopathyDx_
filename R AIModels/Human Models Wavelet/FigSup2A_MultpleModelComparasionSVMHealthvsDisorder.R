@@ -2,6 +2,11 @@ source("BaseFunctions/DataProcessing.R")
 source("BaseFunctions/ModelFunctions_Modified.R")
 source('R/BasicFunctions.R')
 
+#Human multimodel, 1st and 2nd balanced training data - 2nd categorization,
+#frequency <= 40 Hz and >= 0.3 Hz, time window for each observation (size.bin) = 60000 ms,
+#Proportion 80/20, Maximum reading of the files (size.of.register) = 360000 ms.
+#SVM Linear and SVM Radial
+
 library(doParallel)
 library(caret)
 library(pROC)
@@ -10,7 +15,7 @@ cl <- makeCluster(detectCores())
 registerDoParallel(cl)
 
 #Loading of preprocessed data
-photo.60s.t <- read.csv("DataH_and_A/wavelet2022/dfBalanceWaveletSegundaCat28022022A_0.3_40Hz.csv")
+photo.60s.t <- read.csv("DataH_and_A/wavelet2022/HumansBalanced/dfHealthvsDisorder_0.3_40Hz_2ndCat.csv")
 photo.60s.t <- setDT(photo.60s.t)
 
 #Set the seed.
@@ -56,7 +61,7 @@ generate.roc.data <- sapply(
 )
 
 #Plot ROC in one plot
-caret.models.plot <- ROCMultiPlotFromCaret(generate.roc.data, "Multiple Models Caret")
+caret.models.plot <- ROCMultiPlotFromCaret(generate.roc.data, "Multiple-Model SVM - Health vs Disorder")
 plot(caret.models.plot)
 
 

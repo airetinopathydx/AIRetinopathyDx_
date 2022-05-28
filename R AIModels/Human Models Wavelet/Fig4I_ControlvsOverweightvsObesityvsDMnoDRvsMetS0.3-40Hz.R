@@ -10,7 +10,7 @@ source('R/BasicFunctions.R')
 library(caret)
 remove.columns <- c("patient", "patient.number","group", "obs")
 
-mm1.photo.60s.t <- read.csv("DataH_and_A/wavelet2022/Multiclase/dfControl vs Sobrepeso vs Obesidad vs DiabetesSinRD vs SM_2daCat_0.3_40HzBalanceado.csv")
+mm1.photo.60s.t <- read.csv("DataH_and_A/wavelet2022/HumansBalanced/Multiclass/dfControlvsOverweightvsObesityvsDMnoDRvsMetS_0.3_40Hz_2ndCat.csv")
 mm1.photo.60s.t <- setDT(mm1.photo.60s.t)
 
 set.seed(1234567)

@@ -9,7 +9,7 @@ source('R/BasicFunctions.R')
 library(caret)
 remove.columns <- c("patient", "patient.number","group", "obs")
 
-m2.photo.60s.t <- read.csv("DataH_and_A/wavelet2022/dfBalanceWaveletSegundaCat28022022A_0.4_2.5Hz.csv")
+m2.photo.60s.t <- read.csv("DataH_and_A/wavelet2022/HumansBalanced/dfHealthvsDisorder_0.4_2.5Hz_2ndCat.csv")
 m2.photo.60s.t <- setDT(m2.photo.60s.t)
 
 set.seed(1234567)
