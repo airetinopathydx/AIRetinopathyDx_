@@ -523,61 +523,7 @@ def Fig_2EF(mainDataFrame):
 	print("Saving file, please wait...")
 	#Save the dataframe in csv format.
 	mainDataFrame.to_csv("save\dfBalanceWaveletSegundaCat28022022A_0.3_40Hz_G.csv", index=False, header=True)
-	
-def Fig_4F(mainDataFrame):
-	#Updates the labels according to the indicated dictionary.
-	mainDataFrame = updateHealthStatus(mainDataFrame, secondLabeling)
-	
-	#Disorder
-	OW2ndCatDataFrame = balanceData(mainDataFrame, secondLabeling, OW2ndCat)
-	Obese2ndCatDataFrame = balanceData(mainDataFrame, secondLabeling, Obese2ndCat)
-	#Health
-	Control2ndCatDataFrame = balanceData(mainDataFrame, secondLabeling, Control2ndCat)
-	
-	#Join DataFrames
-	mainDataFrame = pd.concat([OW2ndCatDataFrame, Obese2ndCatDataFrame, Control2ndCatDataFrame], ignore_index=True, sort=False)
-	
-	#Balances or Filters the data set (if necessary).
-	mainDataFrame = balanceByDict(mainDataFrame, bd.dfControlvsSobrepesoyObesidad2daCat_0_3_40HzBalanceado)
-	#print(mainDataFrame)
-	#Deletes records with patient.number < 68 and with > 5 obs because of repetition of the signal.
-	mainDataFrame = cleanDataEx(mainDataFrame)
-	
-	#Filters wavelet transform at 0.3-40Hz.
-	mainDataFrame = signalFilter0_3_40Hz(mainDataFrame)
-	print(mainDataFrame)
 
-	print("Saving file, please wait...")
-	#Save the dataframe in csv format.
-	mainDataFrame.to_csv("save\dfControlvsSobrepesoyObesidad2daCat_0.3_40HzBalanceado_G.csv", index=False, header=True)
-	
-def Fig_4G(mainDataFrame):
-	#Updates the labels according to the indicated dictionary.
-	mainDataFrame = updateHealthStatus(mainDataFrame, secondLabeling)
-	
-	#Disorder
-	OW2ndCatDataFrame = balanceData(mainDataFrame, secondLabeling, OW2ndCat)
-	Obese2ndCatDataFrame = balanceData(mainDataFrame, secondLabeling, Obese2ndCat)
-	MetS2ndCatDataFrame = balanceData(mainDataFrame, secondLabeling, MetS2ndCat)
-	#Health
-	Control2ndCatDataFrame = balanceData(mainDataFrame, secondLabeling, Control2ndCat)
-	
-	#Join DataFrames
-	mainDataFrame = pd.concat([OW2ndCatDataFrame, Obese2ndCatDataFrame, MetS2ndCatDataFrame, Control2ndCatDataFrame], ignore_index=True, sort=False)
-	
-	#Balances or Filters the data set (if necessary).
-	mainDataFrame = balanceByDict(mainDataFrame, bd.dfControlvsSobrepeso_ObesidadySM2daCat_0_3_40HzBalanceado)
-	#Deletes records with patient.number < 68 and with > 5 obs because of repetition of the signal.
-	mainDataFrame = cleanDataEx(mainDataFrame)
-	
-	#Filters wavelet transform at 0.3-40Hz.
-	mainDataFrame = signalFilter0_3_40Hz(mainDataFrame)
-	print(mainDataFrame)
-
-	print("Saving file, please wait...")
-	#Save the dataframe in csv format.
-	mainDataFrame.to_csv("save\dfControlvsSobrepeso_ObesidadySM2daCat_0.3_40HzBalanceado_G.csv", index=False, header=True)
-	
 def Fig_3A(mainDataFrame):
 	#Updates the labels according to the indicated dictionary.
 	mainDataFrame = updateHealthStatus(mainDataFrame, secondLabeling)
@@ -610,41 +556,7 @@ def Fig_3A(mainDataFrame):
 
 	print("Saving file, please wait...")
 	#Save the dataframe in csv format.
-	mainDataFrame.to_csv("save\dfControl vs Sobrepeso vs Obesidad vs DiabetesSinRD vs SM_2daCat_0.3_40HzBalanceado_G.csv", index=False, header=True)
-
-def Fig_5A1(mainDataFrame):
-	#Updates the labels according to the indicated dictionary.
-	mainDataFrame = updateHealthStatus(mainDataFrame, secondLabeling)
-	#Balances or Filters the data set (if necessary).
-	mainDataFrame = balanceByDict(mainDataFrame, bd.dfBalanceWaveletSegundaCat28022022A_0_4_2_5Hz)
-	mainDataFrame = sortByListPatientFileNames(mainDataFrame, bd.dfBalanceWaveletSegundaCat28022022A_LPatientNames)
-	#Deletes records with patient.number < 68 and with > 5 obs because of repetition of the signal.
-	mainDataFrame = cleanDataEx(mainDataFrame)
-	
-	#Filters wavelet transform at 0.4-2.5Hz.
-	mainDataFrame = signalFilter0_4__2_5Hz(mainDataFrame)
-	print(mainDataFrame)
-
-	print("Saving file, please wait...")
-	#Save the dataframe in csv format.
-	mainDataFrame.to_csv("save\dfBalanceWaveletSegundaCat28022022A_0.4_2.5Hz_G.csv", index=False, header=True)
-	
-def Fig_5A2(mainDataFrame):
-	#Updates the labels according to the indicated dictionary.
-	mainDataFrame = updateHealthStatus(mainDataFrame, secondLabeling)
-	#Balances or Filters the data set (if necessary).
-	mainDataFrame = balanceByDict(mainDataFrame, bd.dfBalanceWaveletSegundaCat28022022A_2_5_40Hz)
-	mainDataFrame = sortByListPatientFileNames(mainDataFrame, bd.dfBalanceWaveletSegundaCat28022022A_LPatientNames)
-	#Deletes records with patient.number < 68 and with > 5 obs because of repetition of the signal.
-	mainDataFrame = cleanDataEx(mainDataFrame)
-	
-	#Filters wavelet transform at 2.5-40Hz.
-	mainDataFrame = signalFilter2_5_40Hz(mainDataFrame)
-	print(mainDataFrame)
-
-	print("Saving file, please wait...")
-	#Save the dataframe in csv format.
-	mainDataFrame.to_csv("save\dfBalanceWaveletSegundaCat28022022A_2.5_40Hz_G.csv", index=False, header=True)
+	mainDataFrame.to_csv("save\dfControl vs OW vs Obesity vs Diabetes witouth DR vs MS_2daCat_0.3_40HzBalanced_G.csv", index=False, header=True)
 
 ### Main Program ###
 
@@ -653,8 +565,4 @@ mainDataFrame = updateObs(mainDataFrame)
 
 ## Generate Figure dataframes ##
 Fig_2EF(mainDataFrame)#Fig_4A(mainDataFrame)
-#Fig_4F(mainDataFrame)
-#Fig_4G(mainDataFrame)
 Fig_3A(mainDataFrame)#Fig_4I(mainDataFrame)
-#Fig_5A1(mainDataFrame)
-#Fig_5A2(mainDataFrame)
