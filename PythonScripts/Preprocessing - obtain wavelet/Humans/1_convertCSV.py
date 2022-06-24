@@ -14,7 +14,7 @@ filesToRead = []
 for f in arrFiles:
 	fileName = splitext(f)[0]
 	fileExtension = splitext(f)[1]
-	#Avoid python and excel 2007 or later files
+	#Avoid python and files
 	if ".py" not in fileExtension: 
 		filesToRead.append(f)
 
@@ -25,6 +25,7 @@ def loop(fileName):
 	try:
 		#Read the file in Excel format
 		df = pd.read_excel(fileName,engine='openpyxl', header=None)
+		#Save the file in csv format
 		df.to_csv(splitext(fileName)[0] + ".csv", index=False, header=False)
 	except:
 		print("Unexpected error for file: " + fileName + "\n", sys.exc_info())

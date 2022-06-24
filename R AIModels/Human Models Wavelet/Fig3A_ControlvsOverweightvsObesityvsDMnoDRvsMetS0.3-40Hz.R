@@ -43,9 +43,4 @@ confusionMatrix(as.factor(dfPredictions$predict), as.factor(mm1.model.control.hu
 #Saving the model
 #modelfile <- h2o.download_mojo(mm1.model.control.humans$model, path=".", get_genmodel_jar=TRUE)
 
-#Save predictions
-#write.csv(dfPredictions,"./dfPredictionsWavelet_Control vs DMsinRD vs Sobrepeso vs Obesidad vs MetS_2daCat_0.3_40Hz_DRF_8020B_Tuning.csv")
-#write.csv(as.data.frame(mm1.model.control.humans$testset_tag),"./testsetWavelet_Control vs DMsinRD vs Sobrepeso vs Obesidad vs MetS_2daCat_0.3_40Hz_DRF_8020B_Tuning.csv")
-
-
 #############################################################################################

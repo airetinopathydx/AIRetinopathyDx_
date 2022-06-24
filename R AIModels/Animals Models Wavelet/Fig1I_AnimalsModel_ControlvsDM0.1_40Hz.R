@@ -24,8 +24,10 @@ mA.setTrain$group <- "train"
 mA.setTest$group <- "test"
 mA.photo.60s.t.partitioning <- rbind(mA.setTrain, mA.setTest)
 
+#Trains the model
 mA.model.control.animals <- TraingModelH2ODL(mA.photo.60s.t.partitioning, remove.columns, class.column = 'health.status', reproducible = T)
 mA.model.control.animals.plot <- SingleModelROCPlot(mA.model.control.animals$performance, "Model Control vs DM  0.1Hz - 40Hz")
+#Plots ROC
 plot(mA.model.control.animals.plot, type="roc")
 
 #Confusion matrix with caret

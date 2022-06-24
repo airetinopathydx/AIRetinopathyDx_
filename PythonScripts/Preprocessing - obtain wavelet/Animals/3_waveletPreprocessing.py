@@ -1,5 +1,5 @@
 #This script is used to calculate the wavelet transform 
-#for each patient given their ERG signal.
+#for each file.
 import cwt
 import pandas as pd
 import numpy as np
@@ -66,13 +66,8 @@ def loop(arrFiles, idWorker):
                 #print(listaMean)
                 print(len(listaMean))
                 
-                Fmax = 40
-                Fmin = 0.5
-
-                fLinear = np.arange(Fmin, Fmax, Fmax/(len(listaMean)+1)).tolist()
                 listaMean = listaMean[::-1]
 
-                print(len(fLinear))
                 print(len(listaMean))
                 
                 #Obtain the patient number (optional in animals)

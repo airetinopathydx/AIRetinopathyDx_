@@ -507,14 +507,14 @@ def updateHealthStatusList(df, listPatients, customText):
 
 
 ### Functions to generate Figures dataframes ###
-def Fig_4A(mainDataFrame):
+def Fig_2EF(mainDataFrame):
 	#Updates the labels according to the indicated dictionary.
 	mainDataFrame = updateHealthStatus(mainDataFrame, secondLabeling)
-	#Balances or Filters the data set (if necessary).
-	mainDataFrame = balanceByDict(mainDataFrame, bd.dfBalanceWaveletSegundaCat28022022A_0_3_40Hz)
-	mainDataFrame = sortByListPatientFileNames(mainDataFrame, bd.dfBalanceWaveletSegundaCat28022022A_LPatientNames)
 	#Deletes records with patient.number < 68 and with > 5 obs because of repetition of the signal.
 	mainDataFrame = cleanDataEx(mainDataFrame)
+	#Balances or Filters the data set (if necessary).
+	mainDataFrame = balanceByDict(mainDataFrame, bd.dfBalanceWaveletSegundaCatNew_0_3_40Hz)
+	mainDataFrame = sortByListPatientFileNames(mainDataFrame, bd.dfBalanceWaveletSegundaCatNew_LPatientNames)
 	
 	#Filters wavelet transform at 0.3-40Hz.
 	mainDataFrame = signalFilter0_3_40Hz(mainDataFrame)
@@ -578,7 +578,7 @@ def Fig_4G(mainDataFrame):
 	#Save the dataframe in csv format.
 	mainDataFrame.to_csv("save\dfControlvsSobrepeso_ObesidadySM2daCat_0.3_40HzBalanceado_G.csv", index=False, header=True)
 	
-def Fig_4I(mainDataFrame):
+def Fig_3A(mainDataFrame):
 	#Updates the labels according to the indicated dictionary.
 	mainDataFrame = updateHealthStatus(mainDataFrame, secondLabeling)
 	
@@ -652,9 +652,9 @@ def Fig_5A2(mainDataFrame):
 mainDataFrame = updateObs(mainDataFrame)
 
 ## Generate Figure dataframes ##
-Fig_4A(mainDataFrame)
-Fig_4F(mainDataFrame)
-Fig_4G(mainDataFrame)
-Fig_4I(mainDataFrame)
-Fig_5A1(mainDataFrame)
-Fig_5A2(mainDataFrame)
+Fig_2EF(mainDataFrame)#Fig_4A(mainDataFrame)
+#Fig_4F(mainDataFrame)
+#Fig_4G(mainDataFrame)
+Fig_3A(mainDataFrame)#Fig_4I(mainDataFrame)
+#Fig_5A1(mainDataFrame)
+#Fig_5A2(mainDataFrame)

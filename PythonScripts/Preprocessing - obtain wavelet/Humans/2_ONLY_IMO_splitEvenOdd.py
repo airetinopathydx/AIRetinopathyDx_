@@ -1,5 +1,5 @@
-#This file is used to split the data in fragments of even and odd rows.
-#For IMO sensor only.
+#This file is used to split the signal in even and odd values and to save it in separated files.
+#It is used in some IMO patients.
 import sys
 import pandas as pd
 import numpy as np
